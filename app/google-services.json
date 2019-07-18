@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "745589123127",
+    "firebase_url": "https://fcis-56935.firebaseio.com",
+    "project_id": "fcis-56935",
+    "storage_bucket": "fcis-56935.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745589123127:android:e1546f75587074a5",
+        "android_client_info": {
+          "package_name": "com.pharaohtech.fcis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "745589123127-rk9pe62vadshkd7347bj6c1vu4qhkt63.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pharaohtech.fcis",
+            "certificate_hash": "21e00b1b62b415ad86aeee0e60ccb0395ea9f8cb"
+          }
+        },
+        {
+          "client_id": "745589123127-m0lmghuoeofebq9e8fkukh4ggd2pacla.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7od-xpbpVJguYZE-jZTGVdBNE1iza4N0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "745589123127-m0lmghuoeofebq9e8fkukh4ggd2pacla.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
