@@ -9,12 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Features.Questions"></activity>
-        <activity android:name=".Features.Tasks" />
-        <activity android:name=".Chat.Chat" />
         <activity android:name=".Account.Register" />
         <activity android:name=".Account.Login" />
-        <activity android:name=".Features.Announcements">
+        <activity android:name=".Features.Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
