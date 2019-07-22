@@ -1,7 +1,6 @@
 package com.pharaohtech.fcis.Announcements;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -20,11 +19,11 @@ import com.pharaohtech.fcis.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Announcement extends Fragment {
+public class AddPostFragment extends Fragment {
 
-    FloatingActionButton floatingActionButton;
+    private FloatingActionButton floatingActionButton;
 
-    public Announcement() {
+    public AddPostFragment() {
         // Required empty public constructor
     }
 
@@ -33,18 +32,15 @@ public class Announcement extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        return inflater.inflate(R.layout.fragment_announcement, container, false);
+        return inflater.inflate(R.layout.fragment_add_announcement, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        floatingActionButton =
-                (FloatingActionButton) view.findViewById(R.id.floatingActionButton);
+        floatingActionButton = (FloatingActionButton) view.findViewById(R.id.addFloatingActionButton);
         showActionButton();
         addAnnouncement(view);
-
     }
 
     private void showActionButton(){
@@ -59,26 +55,23 @@ public class Announcement extends Fragment {
     }
 
     private void addAnnouncement(View view){
+        final FloatingActionButton floatingActionButton =
+                (FloatingActionButton) view.findViewById(R.id.addFloatingActionButton);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getActivity(), "Posted Successfuly", Toast.LENGTH_SHORT).show();
                 floatingActionButton.hide();
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Fragment fragment = new AddAnnouncement();
-                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.mainFrame, fragment);
-                        fragmentTransaction.addToBackStack(null);
-                        fragmentTransaction.commit();
+                        getActivity().getSupportFragmentManager().popBackStack();
                     }
                 }, 150);
 
             }
         });
     }
-
 }

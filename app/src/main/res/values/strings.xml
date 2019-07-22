@@ -3,4 +3,35 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--LoginStrings-->
+    <string name="mainSignout">Signed out successfully</string>
+    <string name="loginLogo">FCIS</string>
+    <string name="loginName">Email</string>
+    <string name="loginPass">Password</string>
+    <string name="loginBtn">LOGIN</string>
+    <string name="loginNot">Not a member yet?</string>
+    <string name="loginForgot">Forgot Password?</string>
+    <string name="loginToastFill">Please fill out all the fields</string>
+    <string name="loginToastVerified">Email is not verified
+        check your email inbox.</string>
+
+    <!--RegisterStrings-->
+    <string name="registerName">Full Name</string>
+    <string name="registerEmail">E-Mail</string>
+    <string name="registerSeatNum">Seat Number</string>
+    <string name="registerPassword">Password</string>
+    <string name="registerPassword2">Confirm Password</string>
+    <string name="registerBtn">REGISTER</string>
+    <string name="registerAlready">Already a member?</string>
+    <string name="registerToastPasswordMatch">Passwords did not match</string>
+    <string name="registerToastEmpty">All fields must be filled out.</string>
+    <string name="registerToastPhoto">Please choose a profile photo</string>
+    <string name="registerPermission">Please accept the required permissions</string>
+    <string name="registerToastSignup">Signup successful. Sending verification email.</string>
+
+    <!--ForgotStrings-->
+    <string name="forgotEmail">Enter Your Email</string>
+    <string name="forgotBtn">ENTER</string>
+
 </resources>

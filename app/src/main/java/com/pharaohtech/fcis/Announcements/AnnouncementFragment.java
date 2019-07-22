@@ -12,18 +12,19 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.Button;
 
+import com.pharaohtech.fcis.Chat.chatFragment;
 import com.pharaohtech.fcis.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AddAnnouncement extends Fragment {
+public class AnnouncementFragment extends Fragment {
 
-    private FloatingActionButton floatingActionButton;
+    FloatingActionButton floatingActionButton;
 
-    public AddAnnouncement() {
+    public AnnouncementFragment() {
         // Required empty public constructor
     }
 
@@ -32,15 +33,18 @@ public class AddAnnouncement extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_announcement, container, false);
+
+        return inflater.inflate(R.layout.fragment_announcement, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        floatingActionButton = (FloatingActionButton) view.findViewById(R.id.addFloatingActionButton);
+        floatingActionButton =
+                (FloatingActionButton) view.findViewById(R.id.floatingActionButton);
         showActionButton();
         addAnnouncement(view);
+
     }
 
     private void showActionButton(){
@@ -54,24 +58,42 @@ public class AddAnnouncement extends Fragment {
         }, 150);
     }
 
+    private void goToChat(View view){
+        Button b = view.findViewById(R.id.button);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new chatFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.mainFrame, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+    }
+
     private void addAnnouncement(View view){
-        final FloatingActionButton floatingActionButton =
-                (FloatingActionButton) view.findViewById(R.id.addFloatingActionButton);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Posted Successfuly", Toast.LENGTH_SHORT).show();
                 floatingActionButton.hide();
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        getActivity().getSupportFragmentManager().popBackStack();
+                        Fragment fragment = new AddPostFragment();
+                        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.mainFrame, fragment);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
                     }
                 }, 150);
 
             }
         });
     }
+
 }
