@@ -15,6 +15,7 @@
     <string name="loginToastFill">Please fill out all the fields</string>
     <string name="loginToastVerified">Email is not verified
         check your email inbox.</string>
+    <string name="loginToastFailed">Email or Password is incorrect</string>
 
     <!--RegisterStrings-->
     <string name="registerName">Full Name</string>
@@ -33,5 +34,22 @@
     <!--ForgotStrings-->
     <string name="forgotEmail">Enter Your Email</string>
     <string name="forgotBtn">ENTER</string>
+
+    <!--TopBarStrings-->
+    <string name="announcementsTag">Announcements</string>
+    <string name="resultsTag">Results</string>
+    <string name="chatTag">Chat</string>
+    <string name="QandAnswersTag">Q&amp;A</string>
+    <string name="tasksTag">Tasks</string>
+    <string name="socialTag">Social</string>
+    <string name="profileTag">Profile</string>
+
+    <string name="title_activity_test">test</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

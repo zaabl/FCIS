@@ -1,4 +1,4 @@
-package com.pharaohtech.fcis.Models;
+package com.pharaohtech.fcis.models;
 
 public class Post {
     private String displayName;

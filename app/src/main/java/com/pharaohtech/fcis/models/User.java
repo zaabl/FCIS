@@ -1,18 +1,20 @@
-package com.pharaohtech.fcis.Models;
+package com.pharaohtech.fcis.models;
 
 public class User {
     private String user_id;
     private String email;
     private String display_name;
     private String profile_photo;
+    private String seat_number;
     private String user_type;
 
-    public User(String user_id, String email, String display_name, String profile_photo, String user_type) {
+    public User(String user_id, String email, String display_name, String profile_photo, String user_type, String seat_number) {
         this.user_id = user_id;
         this.email = email;
         this.display_name = display_name;
         this.profile_photo = profile_photo;
         this.user_type = user_type;
+        this.seat_number = seat_number;
     }
 
     public User() {
@@ -59,6 +61,14 @@ public class User {
         this.user_type = user_type;
     }
 
+    public String getSeat_number() {
+        return seat_number;
+    }
+
+    public void setSeat_number(String seat_number) {
+        this.seat_number = seat_number;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -66,6 +76,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", display_name='" + display_name + '\'' +
                 ", profile_photo='" + profile_photo + '\'' +
+                ", seat_number='" + seat_number + '\'' +
                 ", user_type='" + user_type + '\'' +
                 '}';
     }
