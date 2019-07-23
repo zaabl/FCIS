@@ -19,6 +19,7 @@ public class chatFragment extends Fragment {
 
     public chatFragment() {
         // Required empty public constructor
+        // First time using git so I am just testing brooh
     }
 
 
