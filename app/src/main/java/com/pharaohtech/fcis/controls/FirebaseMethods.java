@@ -6,6 +6,9 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import androidx.annotation.NonNull;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.Continuation;
@@ -17,10 +20,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.mikhaellopez.circularimageview.CircularImageView;
+import com.pharaohtech.fcis.models.Post;
 import com.pharaohtech.fcis.models.User;
 import com.pharaohtech.fcis.R;
 
@@ -37,12 +43,15 @@ public class FirebaseMethods {
     FirebaseFirestore fireStoreDB = FirebaseFirestore.getInstance();
     private String userID;
     private StorageReference mStorageReference;
+    public User user;
+    public static User loginUser;
+    private String name;
 
     public FirebaseMethods(Context context) {
         mAuth = FirebaseAuth.getInstance();
         mStorageReference = FirebaseStorage.getInstance().getReference();
-
         mContext = context;
+        user = new User();
 
         if (mAuth.getCurrentUser() != null) {
             userID = mAuth.getCurrentUser().getUid();
@@ -98,12 +107,12 @@ public class FirebaseMethods {
     private void addNewUser(User user, String profilePic){
         user.setProfile_photo(profilePic);
         fireStoreDB.collection("users")
-                .add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                .document(userID)
+                .set(user)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(DocumentReference documentReference) {
+                    public void onSuccess(Void aVoid) {
                         Toast.makeText(mContext, R.string.registerToastSignup, Toast.LENGTH_SHORT).show();
-                        mAuth.signOut();
                     }
                 });
     }
@@ -166,6 +175,39 @@ public class FirebaseMethods {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.JPEG, quality, stream);
         return stream.toByteArray();
+    }
+
+    //------------------------------------RetrievingData--------------------------------------------
+    //==============================================================================================
+
+    public void retrieveUserData(final String userID, final TextView name, final TextView email, final CircularImageView picture){
+        fireStoreDB.collection("users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    loginUser = new User( userID
+                        ,documentSnapshot.getString("email")
+                        , documentSnapshot.getString("display_name")
+                        , documentSnapshot.getString("profile_photo")
+                        , documentSnapshot.getString("user_type")
+                        , documentSnapshot.getString("seat_number"));
+                    InterfaceUpdater.updateDrawerWidget(user.getDisplay_name(), user.getEmail(), user.getProfile_photo(), name, email, picture);
+                }
+        });
+    }
+
+    //-------------------------------------Post-----------------------------------------------------
+    //==============================================================================================
+
+    public void post(String display_name, String profile_photo, String caption, String uid, Long timestamp){
+        Post post = new Post(display_name, uid, caption, profile_photo, timestamp);
+        fireStoreDB.collection("posts")
+                .add(post)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(mContext, R.string.post_Success, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 }

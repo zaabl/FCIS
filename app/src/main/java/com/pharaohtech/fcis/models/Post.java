@@ -1,26 +1,30 @@
 package com.pharaohtech.fcis.models;
 
 public class Post {
-    private String displayName;
-    private String profilePhoto;
     private String caption;
     private String uid;
+    private String name;
+    private String profilePhoto;
     private Long timestamp;
 
-    public Post(String displayName, String profilePhoto, String caption, String uid, Long timestamp) {
-        this.displayName = displayName;
-        this.profilePhoto = profilePhoto;
+    public Post(String name, String uid, String caption, String profilePhoto, Long timestamp) {
         this.caption = caption;
         this.uid = uid;
+        this.name = name;
+        this.profilePhoto = profilePhoto;
         this.timestamp = timestamp;
     }
 
-    public String getDisplayName() {
-        return displayName;
+    public Post() {
+
     }
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getProfilePhoto() {
@@ -58,10 +62,10 @@ public class Post {
     @Override
     public String toString() {
         return "Post{" +
-                "displayName='" + displayName + '\'' +
-                ", profilePhoto='" + profilePhoto + '\'' +
-                ", caption='" + caption + '\'' +
+                "caption='" + caption + '\'' +
                 ", uid='" + uid + '\'' +
+                ", name='" + name + '\'' +
+                ", profilePhoto='" + profilePhoto + '\'' +
                 ", timestamp=" + timestamp +
                 '}';
     }

@@ -35,18 +35,6 @@ public class LoginActivity extends AppCompatActivity {
         login();
     }
 
-//    private void login(){
-//        Button btnLogin = (Button) findViewById(R.id.logBtn);
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(LoginActivity.this, Main.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                startActivity(intent);
-//            }
-//        });
-//    }
-
     //-------------------------------------------Background-----------------------------------------
     //==============================================================================================
 

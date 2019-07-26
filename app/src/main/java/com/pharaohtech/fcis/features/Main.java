@@ -1,5 +1,7 @@
 package com.pharaohtech.fcis.features;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import com.google.android.material.navigation.NavigationView;
@@ -11,36 +13,72 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
+
+import android.os.Handler;
+import android.util.Log;
+import android.view.ContextMenu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.mikhaellopez.circularimageview.CircularImageView;
 import com.pharaohtech.fcis.announcements.AnnouncementFragment;
 import com.pharaohtech.fcis.R;
 import com.pharaohtech.fcis.account.LoginActivity;
 import com.pharaohtech.fcis.chat.ChatFragment;
+import com.pharaohtech.fcis.controls.FirebaseMethods;
+import com.pharaohtech.fcis.controls.InterfaceUpdater;
+import com.pharaohtech.fcis.models.User;
 import com.pharaohtech.fcis.profile.ProfileFragment;
 import com.pharaohtech.fcis.questions.QuestionFragment;
 import com.pharaohtech.fcis.results.ResultFragment;
 import com.pharaohtech.fcis.tasks.TaskFragment;
+import com.squareup.picasso.Picasso;
 
 public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
+    private static final String TAG = "Main";
     private Fragment navigatedFragment;
     private DrawerLayout drawer;
     private NavigationView navigationView;
+    private TextView name;
+    private TextView email;
+    private CircularImageView picture;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        super.onCreate(savedInstanceState);final FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseMethods firebaseMethods = new FirebaseMethods(Main.this);
+        TextView name = findViewById(R.id.headerName);
+        TextView email = findViewById(R.id.headerMail);
+        CircularImageView picture = findViewById(R.id.headerPic);
+//        firebaseMethods.retrieveUserData(mAuth.getUid(), name, email, picture);
         checkCurrentUser(mAuth.getCurrentUser());
         setContentView(R.layout.activity_main);
         navigatedFragment = new AnnouncementFragment();
         setFragment(navigatedFragment);
         initializeNavigationTools();
         navigationView.setCheckedItem(R.id.nav_announcement);
+//        final Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                setUpWidgets(mAuth);
+//            }
+//        }, 2000);
     }
+
+//    public void setUpWidgets(){
+//        TextView name = findViewById(R.id.headerName);
+//        TextView email = findViewById(R.id.headerMail);
+//        CircularImageView picture = findViewById(R.id.headerPic);
+//        name.setText(FirebaseMethods.loginUser.getDisplay_name());
+//        email.setText(FirebaseMethods.loginUser.getEmail());
+//        Picasso.get().load(FirebaseMethods.loginUser.getProfile_photo()).into(picture);
+//    }
 
     //-------------------------------------------ToolbarAndDrawer-----------------------------------
     //==============================================================================================
@@ -70,6 +108,7 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
             case R.id.nav_announcement: setFragment(announcement);
                 navigationView.setCheckedItem(R.id.nav_announcement);
                 title.setText("Announcements");
+                Toast.makeText(this, FirebaseMethods.loginUser.getDisplay_name(), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_tasks: setFragment(announcement);
                 navigationView.setCheckedItem(R.id.nav_tasks);

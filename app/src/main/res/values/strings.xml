@@ -44,6 +44,10 @@
     <string name="socialTag">Social</string>
     <string name="profileTag">Profile</string>
 
+    <!--Post-->
+    <string name="post_Success">Posted Successfully!</string>
+    <string name="post_hint">Add an announcement!</string>
+
     <string name="title_activity_test">test</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
