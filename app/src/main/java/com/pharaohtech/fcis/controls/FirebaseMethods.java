@@ -26,6 +26,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.pharaohtech.fcis.features.Main;
 import com.pharaohtech.fcis.models.Post;
 import com.pharaohtech.fcis.models.User;
 import com.pharaohtech.fcis.R;
@@ -180,7 +181,7 @@ public class FirebaseMethods {
     //------------------------------------RetrievingData--------------------------------------------
     //==============================================================================================
 
-    public void retrieveUserData(final String userID, final TextView name, final TextView email, final CircularImageView picture){
+    public void retrieveUserData(final String userID, final Main main){
         fireStoreDB.collection("users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -190,11 +191,13 @@ public class FirebaseMethods {
                         , documentSnapshot.getString("profile_photo")
                         , documentSnapshot.getString("user_type")
                         , documentSnapshot.getString("seat_number"));
-                    InterfaceUpdater.updateDrawerWidget(user.getDisplay_name(), user.getEmail(), user.getProfile_photo(), name, email, picture);
+
+                main.setUpWidgets(loginUser.getDisplay_name(), loginUser.getEmail(), loginUser.getProfile_photo());
+//                    InterfaceUpdater.updateDrawerWidget(user.getDisplay_name(), user.getEmail(), user.getProfile_photo(), name, email, picture);
+
                 }
         });
     }
-
     //-------------------------------------Post-----------------------------------------------------
     //==============================================================================================
 

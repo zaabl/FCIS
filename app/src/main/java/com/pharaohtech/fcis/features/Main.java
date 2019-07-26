@@ -55,7 +55,7 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         TextView name = findViewById(R.id.headerName);
         TextView email = findViewById(R.id.headerMail);
         CircularImageView picture = findViewById(R.id.headerPic);
-//        firebaseMethods.retrieveUserData(mAuth.getUid(), name, email, picture);
+        firebaseMethods.retrieveUserData(mAuth.getUid(), this);
         checkCurrentUser(mAuth.getCurrentUser());
         setContentView(R.layout.activity_main);
         navigatedFragment = new AnnouncementFragment();
@@ -71,14 +71,14 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
 //        }, 2000);
     }
 
-//    public void setUpWidgets(){
-//        TextView name = findViewById(R.id.headerName);
-//        TextView email = findViewById(R.id.headerMail);
-//        CircularImageView picture = findViewById(R.id.headerPic);
-//        name.setText(FirebaseMethods.loginUser.getDisplay_name());
-//        email.setText(FirebaseMethods.loginUser.getEmail());
-//        Picasso.get().load(FirebaseMethods.loginUser.getProfile_photo()).into(picture);
-//    }
+    public void setUpWidgets(String name, String email, String photo){
+        TextView drawerName = findViewById(R.id.headerName);
+        TextView drawerMail = findViewById(R.id.headerMail);
+        CircularImageView drawerPicture = findViewById(R.id.headerPic);
+        drawerName.setText(name);
+        drawerMail.setText(email);
+        Picasso.get().load(photo).into(drawerPicture);
+    }
 
     //-------------------------------------------ToolbarAndDrawer-----------------------------------
     //==============================================================================================
