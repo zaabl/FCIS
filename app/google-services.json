@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "745589123127-0dr80uqosoj82gkd84oq7qkib13ncq40.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pharaohtech.fcis",
+            "certificate_hash": "f3a9409dc46da47ecbf3f6dbcae62f1555535fe1"
+          }
+        },
+        {
           "client_id": "745589123127-rk9pe62vadshkd7347bj6c1vu4qhkt63.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

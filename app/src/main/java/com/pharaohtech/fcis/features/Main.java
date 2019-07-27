@@ -1,7 +1,5 @@
 package com.pharaohtech.fcis.features;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import com.google.android.material.navigation.NavigationView;
@@ -14,12 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 
-import android.os.Handler;
-import android.util.Log;
-import android.view.ContextMenu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,10 +24,8 @@ import com.pharaohtech.fcis.R;
 import com.pharaohtech.fcis.account.LoginActivity;
 import com.pharaohtech.fcis.chat.ChatFragment;
 import com.pharaohtech.fcis.controls.FirebaseMethods;
-import com.pharaohtech.fcis.controls.InterfaceUpdater;
-import com.pharaohtech.fcis.models.User;
 import com.pharaohtech.fcis.profile.ProfileFragment;
-import com.pharaohtech.fcis.questions.QuestionFragment;
+import com.pharaohtech.fcis.questions.QuestionGridFragment;
 import com.pharaohtech.fcis.results.ResultFragment;
 import com.pharaohtech.fcis.tasks.TaskFragment;
 import com.squareup.picasso.Picasso;
@@ -99,7 +90,7 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Fragment announcement = new AnnouncementFragment();
         Fragment tasks = new TaskFragment();
-        Fragment questions = new QuestionFragment();
+        Fragment questions = new QuestionGridFragment();
         Fragment resutls = new ResultFragment();
         Fragment chat = new ChatFragment();
         Fragment profile = new ProfileFragment();

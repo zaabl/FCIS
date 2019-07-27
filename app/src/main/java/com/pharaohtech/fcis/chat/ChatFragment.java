@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.GridView;
 
 import com.pharaohtech.fcis.R;
 
@@ -19,7 +21,6 @@ public class ChatFragment extends Fragment {
 
     public ChatFragment() {
         // Required empty public constructor
-        // First time using git so I am just testing brooh
     }
 
 
@@ -33,5 +34,6 @@ public class ChatFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
     }
 }
